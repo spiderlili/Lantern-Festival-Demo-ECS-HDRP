@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
+[RequiresEntityConversion]
 //Will become the component on the entity for a game object
-public class PerlinCubePosProxyECS : MonoBehaviour
+public class PerlinCubePosProxyECS : MonoBehaviour, IConvertGameObjectToEntity
 {
-    // Start is called before the first frame update
-    void Start()
+    //EntityManager is a pool for all entities
+    public void Convert(Entity entity, EntityManager entityManager, GameObjectConversionSystem conversionSystem)
     {
+        //create a new component
+        var data = new PerlinPositionForEntity
+        { };
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        //add component onto entity (cube) 
+        entityManager.AddComponentData(entity, data);
     }
 }
