@@ -130,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007586516}
-  - component: {fileID: 1007586515}
   m_Layer: 0
   m_Name: CubeSpawner
   m_TagString: Untagged
@@ -138,22 +137,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1007586515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007586514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a38b3eda14349d94db1c2da3863bdd61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubePf: {fileID: 6696267669021863039, guid: 1aaf4199e7ff3a04190510699f558b2f, type: 3}
-  rows: 100
-  columns: 100
-  perlinMultiplier: 0.2
 --- !u!4 &1007586516
 Transform:
   m_ObjectHideFlags: 0
