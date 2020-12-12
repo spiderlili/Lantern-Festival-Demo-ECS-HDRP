@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//non-ECS way of spawning cubes as comparison
 public class SpawnCubes : MonoBehaviour
 {
     public GameObject cubePf;
