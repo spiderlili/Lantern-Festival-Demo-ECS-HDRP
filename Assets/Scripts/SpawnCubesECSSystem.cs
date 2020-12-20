@@ -9,6 +9,9 @@ public class SpawnCubesECSSystem : JobComponentSystem
 {
     EndSimulationEntityCommandBufferSystem m_EntityCommandBufferSystem;
 
+    //higher value => more exaggerated height differences
+    [ReadOnly] private static float cubeHeightMultiplier = 3.0f;
+
     protected override void OnCreate()
     {
         m_EntityCommandBufferSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
@@ -16,7 +19,7 @@ public class SpawnCubesECSSystem : JobComponentSystem
 
     //SpawnCubesECS becomes its own entity, cause it exist & run
     //use [BurstCompile] attribute to compile a job with Burst
-    [BurstCompile]
+    //[BurstCompile]
     struct SpawnJob : IJobForEachWithEntity<SpawnCubesECS, LocalToWorld>
     {
         public EntityCommandBuffer commandBuffer;
@@ -36,7 +39,7 @@ public class SpawnCubesECSSystem : JobComponentSystem
                     //create a position of where to put this entity instance in the world - different than doing vector3 but maths is familiar
                     //want a local to the world - using the the world coordinate system: creating a transform for entity based on world coordinates & actual position in world
                     //using new noise notation of ECS as can't use Mathf library. set height to noise value
-                    var pos = math.transform(location.Value, new float3(x, noise.cnoise(new float2(x, z) * 0.2f), z));
+                    var pos = math.transform(location.Value, new float3(x, noise.cnoise(new float2(x, z) * 0.2f) * cubeHeightMultiplier, z));
 
                     //apply the transform to the entity created 
                     commandBuffer.SetComponent(instance, new Translation
