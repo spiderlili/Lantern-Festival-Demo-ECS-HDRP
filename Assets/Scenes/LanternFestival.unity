@@ -536,21 +536,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: skylantern
       objectReference: {fileID: 0}
-    - target: {fileID: 8768067341631245226, guid: d1089f91dc0921b40a27b7c5e9d9299f,
-        type: 3}
-      propertyPath: m_ShapeRadius
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8774472410694667805, guid: d1089f91dc0921b40a27b7c5e9d9299f,
-        type: 3}
-      propertyPath: m_ShadowRadius
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8774472410694667805, guid: d1089f91dc0921b40a27b7c5e9d9299f,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 47.746483
-      objectReference: {fileID: 0}
     - target: {fileID: 8991975538062022099, guid: d1089f91dc0921b40a27b7c5e9d9299f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1080,3 +1065,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2071212013}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2115489778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2115489780}
+  - component: {fileID: 2115489779}
+  m_Layer: 0
+  m_Name: LanternSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2115489779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115489778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d6637017ea01245bf68dc342bd73a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5373554963301967808, guid: d1089f91dc0921b40a27b7c5e9d9299f, type: 3}
+  spawnRate: 10
+  maxDistanceFromSpawner: 1
+--- !u!4 &2115489780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115489778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
