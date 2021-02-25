@@ -10,7 +10,7 @@ public struct SpawnerLantern : IComponentData
     public Entity prefabLantern;
 
     //how far away from spawner = radius
-    public float maxDistanceFromSpawner;
+    public float maxDistFromSpawner;
 
     //how often to spawn: how many seconds between each spawn
     public float secondsBetweenSpawns;
