@@ -1,11 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 using Time = UnityEngine.Time;
+using Unity.Transforms;
 
 public class SpawnerLanternSystem : JobComponentSystem
 {
@@ -26,12 +25,12 @@ public class SpawnerLanternSystem : JobComponentSystem
     {
         private EntityCommandBuffer.Concurrent entityCommandBuffer;
         //don't have access to deltaTime - need to pass it in as it's on a separate core
-        private readonly float deltaTime;
+        private float deltaTime;
 
-        private Random random;
+        private Unity.Mathematics.Random random;
 
         //have to be passed in through the job scheduler
-        public SpawnerJob(EntityCommandBuffer.Concurrent entityCommandBuffer, Random random, float deltaTime)
+        public SpawnerJob(EntityCommandBuffer.Concurrent entityCommandBuffer, Unity.Mathematics.Random random, float deltaTime)
         {
             this.entityCommandBuffer = entityCommandBuffer;
             this.random = random;
@@ -40,7 +39,7 @@ public class SpawnerLanternSystem : JobComponentSystem
 
         //similar to update loop
         //don't need the entity but need the index, make spawner position read only
-        public void Execute(Entity entity, int index, ref SpawnerLantern spawner, [ReadOnly] ref LocalToWorld localToWorld)
+        public void Execute(Entity entity, int index, ref SpawnerLantern spawner, ref LocalToWorld localToWorld)
         {
             //can't use entity command buffer with burst but it will be compatible eventually, can still use jobs to use multiple cores
             spawner.secondsToNextSpawn -= deltaTime;
@@ -65,13 +64,14 @@ public class SpawnerLanternSystem : JobComponentSystem
     //set up spawner job
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        var spawnerJob = new SpawnerJob(endSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),
-            new Random((uint) UnityEngine.Random.Range(0, float.MaxValue)), //try int.MaxValue
-            Time.deltaTime
+        SpawnerJob spawnerJob = new SpawnerJob(endSimulationEntityCommandBufferSystem.CreateCommandBuffer().ToConcurrent(),
+            new Unity.Mathematics.Random((uint) UnityEngine.Random.Range(0, int.MaxValue)), //try float.MaxValue
+            UnityEngine.Time.deltaTime
         );
 
         JobHandle jobHandle = spawnerJob.Schedule(this, inputDeps);
         endSimulationEntityCommandBufferSystem.AddJobHandleForProducer(jobHandle);
+
         return jobHandle;
     }
 }
