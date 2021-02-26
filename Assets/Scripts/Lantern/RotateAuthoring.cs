@@ -9,6 +9,7 @@ using UnityEngine;
 public class RotateAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
     [SerializeField] private float degreesPerSecond;
+    [SerializeField] private float flySpeed;
 
     //convert gets called when close is pressed on the sub scene
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -17,9 +18,11 @@ public class RotateAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponentData(entity, new Rotate
         {
             //dots optimised maths functions (Unity.Mathematics)
-            radiansPerSecond = math.radians(degreesPerSecond)
+            radiansPerSecond = math.radians(degreesPerSecond),
+                flySpeedPerSecond = flySpeed
         });
 
         dstManager.AddComponentData(entity, new RotationEulerXYZ());
+        dstManager.AddComponentData(entity, new Translation());
     }
 }

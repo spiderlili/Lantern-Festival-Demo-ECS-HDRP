@@ -7,12 +7,13 @@ using UnityEngine;
 public class RotateSystem : JobComponentSystem
 {
     //job done for each entity that has the component passed in: RotationEulerXYZ & Rotate
-    private struct RotateJob : IJobForEach<RotationEulerXYZ, Rotate>
+    private struct RotateJob : IJobForEach<RotationEulerXYZ, Translation, Rotate>
     {
         public float deltaTime;
-        public void Execute(ref RotationEulerXYZ euler, ref Rotate rotate)
+        public void Execute(ref RotationEulerXYZ euler, ref Translation translation, ref Rotate rotate)
         {
             euler.Value.y += rotate.radiansPerSecond * deltaTime;
+            translation.Value.y += rotate.flySpeedPerSecond * deltaTime;
             euler.Value.z = 180;
         }
     }
