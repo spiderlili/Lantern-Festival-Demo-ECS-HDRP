@@ -13,6 +13,7 @@ public class RotateSystem : JobComponentSystem
         public void Execute(ref RotationEulerXYZ euler, ref Rotate rotate)
         {
             euler.Value.y += rotate.radiansPerSecond * deltaTime;
+            euler.Value.z = 180;
         }
     }
 
