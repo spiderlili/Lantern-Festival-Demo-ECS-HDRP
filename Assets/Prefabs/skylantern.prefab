@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 8991975538062022099}
   - component: {fileID: 113413126166114277}
   - component: {fileID: 5957811268423553820}
+  - component: {fileID: 4200631547541487201}
   m_Layer: 0
   m_Name: skylantern
   m_TagString: Untagged
@@ -283,3 +284,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4200631547541487201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373554963301967808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f9c34a181214d418b3ab6a34e77687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degreesPerSecond: 10

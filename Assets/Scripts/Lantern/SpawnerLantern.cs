@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.Entities;
-using UnityEngine;
+﻿using Unity.Entities;
 
 //entities have a list of component data
 public struct SpawnerLantern : IComponentData
