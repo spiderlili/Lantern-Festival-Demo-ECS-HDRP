@@ -10,6 +10,9 @@ public class RotateSystem : JobComponentSystem
     private struct RotateJob : IJobForEach<RotationEulerXYZ, Translation, Rotate>
     {
         public float deltaTime;
+        //private Unity.Mathematics.Random random;
+
+        //TODO: make the movement more random
         public void Execute(ref RotationEulerXYZ euler, ref Translation translation, ref Rotate rotate)
         {
             euler.Value.y += rotate.radiansPerSecond * deltaTime;
